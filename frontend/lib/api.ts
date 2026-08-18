@@ -5,7 +5,11 @@ import type {
   OCRResult,
 } from "./types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://127.0.0.1:8000";
+// vercel.json이 /api/*를 backend 서비스로 rewrite하므로 배포 환경에서는
+// 같은 도메인 상대경로를 쓴다. 로컬 개발(next dev)에는 rewrite가 없어 절대주소가 필요.
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_BASE ??
+  (process.env.NODE_ENV === "production" ? "" : "http://127.0.0.1:8000");
 
 export interface OCROptions {
   lang: LangCode;

@@ -1,0 +1,19 @@
+FROM python:3.13-slim
+
+# opencv-python(cv2)과 onnxruntime이 요구하는 공유 라이브러리
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1 \
+    libglib2.0-0 \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY pyproject.toml .
+COPY app ./app
+RUN pip install --no-cache-dir .
+
+# Vercel 컨테이너 런타임은 $PORT(기본 80)로 트래픽을 보낸다.
+ENV PORT=80
+EXPOSE 80
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]
