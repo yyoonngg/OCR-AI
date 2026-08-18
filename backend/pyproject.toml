@@ -1,0 +1,20 @@
+[project]
+name = "ocr-api"
+version = "0.1.0"
+description = "RapidOCR(ONNX Runtime) 기반 OCR API"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "python-multipart>=0.0.20",
+    "rapidocr>=3.4",
+    "onnxruntime>=1.20",
+    "pillow>=11",
+    "pypdfium2>=4.30",
+    "numpy>=2.0",
+    "anthropic>=0.116",
+    "opencv-python>=4.10",
+]
+
+[tool.ruff]
+line-length = 100
