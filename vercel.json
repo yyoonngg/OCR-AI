@@ -6,7 +6,6 @@
         },
         "backend": {
             "root": "backend",
-            "runtime": "python",
             "entrypoint": "main:app"
         }
     },
