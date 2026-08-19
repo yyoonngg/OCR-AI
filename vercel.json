@@ -4,7 +4,6 @@
     "frontend": { "root": "frontend", "framework": "nextjs" },
     "backend": {
       "root": "backend",
-      "runtime": "container",
       "entrypoint": "Dockerfile.vercel"
     }
   },
